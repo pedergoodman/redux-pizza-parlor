@@ -27,7 +27,7 @@ function PizzaItem({ pizza }) {
     return (
         <>
             <Grid xs={2} sm={2} md={3} key={pizza.id}>
-                <Card sx={{ maxWidth: 345 }}>
+                <Card sx={{ maxWidth: 345, minHeight: 430 }}>
                     <CardMedia
                         component="img"
                         alt="green iguana"
