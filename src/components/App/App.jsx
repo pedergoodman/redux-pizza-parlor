@@ -4,8 +4,13 @@ import axios from 'axios';
 import './App.css';
 import Admin from '../Admin/Admin';
 import { useDispatch } from 'react-redux';
+
+// import components
+import Header from '../Header/Header';
+import PizzaList from '../Pizzas/PizzaList';
 import Form from '../Form/Form';
 import PizzaOrders from '../Checkout/PizzaOrders';
+
 
 function App() {
 
@@ -30,7 +35,7 @@ function App() {
 
 
 
-  // GET for completeed
+  // GET for completed
   const fetchCompletedOrders = () => {
 
     axios.get('/api/order').then((response) => {
@@ -61,9 +66,7 @@ function App() {
 
   return (
     <div className='App'>
-      <header className='App-header'>
-        <h1 className='App-title'>Prime Pizza</h1>
-      </header>
+      <Header />
 
       <Router>
         <ul className="nav">
@@ -81,6 +84,7 @@ function App() {
           <Admin />
         </Route>
         <Route exact path="/home">
+          <PizzaList />
           {/* <Pizzas component goes here> */}
         </Route>
         <Route exact path="/userinfo">
