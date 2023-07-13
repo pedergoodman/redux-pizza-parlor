@@ -22,7 +22,22 @@ function PizzaItem({ pizza }) {
     // sets default to false
     const [isAdded, setIsAdded ] = useState(false);
 
-    console.log('pizza is:', pizza);
+     const handleAddPizza = () => {
+        dispatch({
+            type: 'SAVE_CART',
+            payload: pizza
+        })
+        setIsAdded(true);
+     }
+
+     const handleRemovePizza = () => {
+        dispatch({
+            type: 'REMOVE_CART',
+            payload: pizza.id
+        })
+        setIsAdded(false)
+     }
+
 
     return (
         <>
@@ -44,8 +59,8 @@ function PizzaItem({ pizza }) {
                     </CardContent>
                     <CardActions className='add-remove-container'>
                         {!isAdded ? 
-                            <Button size="medium">ADD</Button> : 
-                            <Button size="medium">REMOVE</Button>
+                            <Button onClick={handleAddPizza} size="medium">ADD</Button> : 
+                            <Button onClick ={handleRemovePizza} size="medium">REMOVE</Button>
                         }
 
                         

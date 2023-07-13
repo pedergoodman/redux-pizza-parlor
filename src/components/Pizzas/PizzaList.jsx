@@ -15,7 +15,7 @@ console.log('pizza list is:', pizzas);
         <>
         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
             {pizzas.map((pizza) => {
-              return <PizzaItem pizza={pizza} />
+              return <PizzaItem key={pizza.id} pizza={pizza} />
             })}
         </Grid>
         </>
