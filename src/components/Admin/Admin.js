@@ -1,4 +1,5 @@
-
+// import React, { useState } from 'react';
+// import { useSelector } from 'react-redux';
 
 
 // This page should not appear in the navigation bar. Eventually 
@@ -6,4 +7,27 @@
 //  available to anyone with the url http://localhost:3000/admin. 
 //  This page will display the name, time and order total for each of the 
 //  orders placed.
+
+function Admin() {
+    
+
+    return (
+        <table>
+         <tr>
+            <th>Name</th>
+            <th>Time Order Placed</th>
+            <th>Type</th>
+            <th>Cost</th>
+         </tr>
+         <tr>
+            <td>row1</td>
+         </tr>
+         <tr>
+            <td>row1</td>
+         </tr>
+        </table>
+    )
+}
+
+export default Admin;
 
