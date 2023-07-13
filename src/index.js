@@ -29,17 +29,16 @@ const pizzas = (state = [], action) => {
 
 
 // cart reducer
-const cart = (state = {}, action) => {
-  // save pizzas
-  const currentCart = state[action.payload] || 0
+const cart = (state = [], action) => {
   if (action.type === "SAVE_CART") {
-    return {...state, [action.payload]: currentCart + 1 };
+    return [...state, action.payload];
     // remove pizzas
   } else if (action.type === "REMOVE_CART") {
-    return {...state, [action.payload]: currentCart - 1};
+    // TODO - logic to remove cart item
+    return [...state, action.payload];
     // checkout 
   } else if (action.type === "CLEAR_CART") {
-    return {...state, [action.payload]: 0};
+    return []
   }
   return state;
 };
@@ -50,7 +49,7 @@ const contacts = (state = [], action) => {
   if (action.type === "SAVE_CONTACTS") {
     return [...state, action.payload + 1];
   } else if (action.type === "REMOVE_CONTACTS") {
-    return [...state, action.payload - 1]
+    return []
   }
   return state;
 };
