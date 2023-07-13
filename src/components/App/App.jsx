@@ -3,9 +3,9 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom/cjs/react-ro
 import axios from 'axios';
 import './App.css';
 import Admin from '../Admin/Admin';
-
-
 import { useDispatch } from 'react-redux';
+import Form from '../Form/Form';
+import PizzaOrders from '../Checkout/PizzaOrders';
 
 function App() {
 
@@ -84,10 +84,10 @@ function App() {
           {/* <Pizzas component goes here> */}
         </Route>
         <Route exact path="/userinfo">
-          {/* <Form component here> */}
+          <Form/>
         </Route>
         <Route exact path="/checkout">
-          {/* <Checkout goes here> */}
+          <PizzaOrders/>
         </Route>
 
         {/* <img src='images/pizza_photo.png' />

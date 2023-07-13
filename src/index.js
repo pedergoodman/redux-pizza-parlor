@@ -9,6 +9,7 @@ import { Provider } from "react-redux";
 import logger from "redux-logger";
 
 // admin
+// [{customer_name: , time: , type: , total: }]
 const orders = (state = [], action) => {
   if (action.type === "SAVE_ORDERS") {
     // return orders
@@ -18,15 +19,16 @@ const orders = (state = [], action) => {
 };
 
 // pizzas
+// [{name: , description: , price: }]
 const pizzas = (state = [], action) => {
   // save pizzas to server
   if (action.type === "SAVE_PIZZAS") {
-    // return pizzas
+    // return pizzas 
+    // {id: , quantity: }
     return action.payload;
   }
   return state;
 };
-
 
 // cart reducer
 const cart = (state = [], action) => {
@@ -44,6 +46,7 @@ const cart = (state = [], action) => {
 };
 
 // contacts reducer 
+// [{customer_name: , street_address: , city: , zip: , type: }]
 const contacts = (state = [], action) => {
   // save contacts
   if (action.type === "SAVE_CONTACTS") {
