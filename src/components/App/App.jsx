@@ -6,6 +6,7 @@ import Admin from '../Admin/Admin';
 import { useDispatch } from 'react-redux';
 // import components
 import Header from '../Header/Header';
+import PizzaList from '../Pizzas/PizzaList';
 
 
 function App() {
@@ -80,6 +81,7 @@ function App() {
           <Admin />
         </Route>
         <Route exact path="/home">
+          <PizzaList />
           {/* <Pizzas component goes here> */}
         </Route>
         <Route exact path="/userinfo">
