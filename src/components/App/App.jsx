@@ -4,9 +4,12 @@ import axios from 'axios';
 import './App.css';
 import Admin from '../Admin/Admin';
 import { useDispatch } from 'react-redux';
+
 // import components
 import Header from '../Header/Header';
 import PizzaList from '../Pizzas/PizzaList';
+import Form from '../Form/Form';
+import PizzaOrders from '../Checkout/PizzaOrders';
 
 
 function App() {
@@ -85,11 +88,10 @@ function App() {
           {/* <Pizzas component goes here> */}
         </Route>
         <Route exact path="/userinfo">
-          P
-          {/* <Form component here> */}
+          <Form/>
         </Route>
         <Route exact path="/checkout">
-          {/* <Checkout goes here> */}
+          <PizzaOrders/>
         </Route>
 
         {/* <img src='images/pizza_photo.png' />
