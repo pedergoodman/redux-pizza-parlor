@@ -1,5 +1,5 @@
-// import React, { useState } from 'react';
-// import { useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 
 // This page should not appear in the navigation bar. Eventually 
@@ -9,7 +9,9 @@
 //  orders placed.
 
 function Admin() {
-    
+
+    const contacts = useSelector(store = store.contacts)
+    console.log(contacts);
 
     return (
         <table>

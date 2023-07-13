@@ -2,6 +2,7 @@ import React from 'react';
 import { HashRouter as Router, Route, Link } from 'react-router-dom/cjs/react-router-dom.min';
 import axios from 'axios';
 import './App.css';
+import Admin from '../Admin/Admin';
 
 function App() {
 
@@ -24,7 +25,7 @@ function App() {
           </li>
         </ul>
         <Route exact path="/admin">
-          {/*Admin Component*/}
+          <Admin />
         </Route>
         <Route exact path="/home">
           {/* <Pizzas component goes here> */}
@@ -40,7 +41,7 @@ function App() {
       <p>Pizza is great.</p> */}
       </Router>
     </div>
-  );
+  )
 }
 
 export default App;
