@@ -3,9 +3,10 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom/cjs/react-ro
 import axios from 'axios';
 import './App.css';
 import Admin from '../Admin/Admin';
-
-
 import { useDispatch } from 'react-redux';
+// import components
+import Header from '../Header/Header';
+
 
 function App() {
 
@@ -30,7 +31,7 @@ function App() {
 
 
 
-  // GET for completeed
+  // GET for completed
   const fetchCompletedOrders = () => {
 
     axios.get('/api/order').then((response) => {
@@ -61,9 +62,7 @@ function App() {
 
   return (
     <div className='App'>
-      <header className='App-header'>
-        <h1 className='App-title'>Prime Pizza</h1>
-      </header>
+      <Header />
 
       <Router>
         <ul className="nav">
@@ -84,6 +83,7 @@ function App() {
           {/* <Pizzas component goes here> */}
         </Route>
         <Route exact path="/userinfo">
+          P
           {/* <Form component here> */}
         </Route>
         <Route exact path="/checkout">
