@@ -30,6 +30,21 @@ const pizzas = (state = [], action) => {
   return state;
 };
 
+// cart reducer
+const cart = (state = [], action) => {
+  if (action.type === "SAVE_CART") {
+    return [...state, action.payload];
+    // remove pizzas
+  } else if (action.type === "REMOVE_CART") {
+    // TODO - logic to remove cart item
+    return [...state, action.payload];
+    // checkout 
+  } else if (action.type === "CLEAR_CART") {
+    return []
+  }
+  return state;
+};
+
 // contacts reducer 
 // [{customer_name: , street_address: , city: , zip: , type: }]
 const contacts = (state = [], action) => {
@@ -37,27 +52,10 @@ const contacts = (state = [], action) => {
   if (action.type === "SAVE_CONTACTS") {
     return [...state, action.payload + 1];
   } else if (action.type === "REMOVE_CONTACTS") {
-    return [...state, action.payload - 1]
+    return []
   }
   return state;
 };
-
-// [{{contact},{pizza}}]
-// cart reducer
-const cart = (state = {}, action) => {
-    // save pizzas
-    const currentCart = state[action.payload] || 0
-    if (action.type === "SAVE_CART") {
-      return {...state, [action.payload]: currentCart + 1 };
-      // remove pizzas
-    } else if (action.type === "REMOVE_CART") {
-      return {...state, [action.payload]: currentCart - 1};
-      // checkout 
-    } else if (action.type === "CLEAR_CART") {
-      return {...state, [action.payload]: 0};
-    }
-    return state;
-  };
 
 // store
 const store = createStore(
@@ -78,3 +76,4 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
+
