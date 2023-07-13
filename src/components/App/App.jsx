@@ -23,9 +23,11 @@ function App() {
             <Link to="/checkout">Checkout</Link>
           </li>
         </ul>
-
+        <Route exact path="/admin">
+          {/*Admin Component*/}
+        </Route>
         <Route exact path="/home">
-          {/* <Pizzas component goes here>*/}
+          {/* <Pizzas component goes here> */}
         </Route>
         <Route exact path="/userinfo">
           {/* <Form component here> */}
