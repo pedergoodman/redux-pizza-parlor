@@ -9,6 +9,7 @@ import { Provider } from "react-redux";
 import logger from "redux-logger";
 
 // admin
+// [{customer_name: , time: , type: , total: }]
 const orders = (state = [], action) => {
   if (action.type === "SAVE_ORDERS") {
     // return orders
@@ -18,33 +19,19 @@ const orders = (state = [], action) => {
 };
 
 // pizzas
+// [{name: , description: , price: }]
 const pizzas = (state = [], action) => {
   // save pizzas to server
   if (action.type === "SAVE_PIZZAS") {
-    // return pizzas
+    // return pizzas 
+    // {id: , quantity: }
     return action.payload;
   }
   return state;
 };
 
-
-// cart reducer
-const cart = (state = {}, action) => {
-  // save pizzas
-  const currentCart = state[action.payload] || 0
-  if (action.type === "SAVE_CART") {
-    return {...state, [action.payload]: currentCart + 1 };
-    // remove pizzas
-  } else if (action.type === "REMOVE_CART") {
-    return {...state, [action.payload]: currentCart - 1};
-    // checkout 
-  } else if (action.type === "CLEAR_CART") {
-    return {...state, [action.payload]: 0};
-  }
-  return state;
-};
-
 // contacts reducer 
+// [{customer_name: , street_address: , city: , zip: , type: }]
 const contacts = (state = [], action) => {
   // save contacts
   if (action.type === "SAVE_CONTACTS") {
@@ -54,6 +41,23 @@ const contacts = (state = [], action) => {
   }
   return state;
 };
+
+// [{{contact},{pizza}}]
+// cart reducer
+const cart = (state = {}, action) => {
+    // save pizzas
+    const currentCart = state[action.payload] || 0
+    if (action.type === "SAVE_CART") {
+      return {...state, [action.payload]: currentCart + 1 };
+      // remove pizzas
+    } else if (action.type === "REMOVE_CART") {
+      return {...state, [action.payload]: currentCart - 1};
+      // checkout 
+    } else if (action.type === "CLEAR_CART") {
+      return {...state, [action.payload]: 0};
+    }
+    return state;
+  };
 
 // store
 const store = createStore(
