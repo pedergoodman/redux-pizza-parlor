@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
+import { HashRouter as Router, Route, Link } from 'react-router-dom/cjs/react-router-dom.min';
 import axios from 'axios';
 import './App.css';
+import Admin from '../Admin/Admin';
 
 
 import { useDispatch } from 'react-redux';
 
 function App() {
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   // GET for pizza objects
   const fetchPizzaList = () => {
@@ -15,10 +17,10 @@ function App() {
     axios.get('/api/pizza').then((response) => {
       console.log(response.data);
 
-      // dispatch({
-      //   type: 'SAVE_PIZZAS',
-      //   payload: response.data
-      // })
+      dispatch({
+        type: 'SAVE_PIZZAS',
+        payload: response.data
+      })
 
     }).catch((err) => {
       console.log('Error GETing pizza list', err);
@@ -27,54 +29,30 @@ function App() {
   }; // end fetchPizzaList
 
 
-  // load pizza list 
+
+  // GET for completeed
+  const fetchCompletedOrders = () => {
+
+    axios.get('/api/order').then((response) => {
+      console.log('Orders list is:', response.data);
+
+      // send order data to store
+      dispatch({
+        type: 'SAVE_ORDERS',
+        payload: response.data
+      })
+
+    }).catch((err) => {
+      console.log('Error GETing completed order list', err);
+    });
+  }; // end fetchCompletedOrders
+
+
+  // load pizza list and orders list
   useEffect(() => {
     fetchPizzaList();
     fetchCompletedOrders();
   }, [])
-
-
-    // GET for pizza objects
-    const fetchCompletedOrders = () => {
-
-      axios.get('/api/order').then((response) => {
-        console.log('Orders list is:', response.data);
-  
-        // dispatch({
-        //   type: 'SAVE_ORDERS',
-        //   payload: response.data
-        // })
-  
-      }).catch((err) => {
-        console.log('Error GETing completed order list', err);
-      });
-  
-    }; // end fetchCompletedOrders
-
-
-    // POST object
-    const sendOrderToServer = () => {
-      
-      axios.post('/api/order', )
-
-      // {
-      //   "customer_name": "Donatello",
-      //   "street_address": "20 W 34th St",
-      //   "city": "New York",
-      //   "zip": "10001",
-      //   "total": "27.98",
-      //   "type": "Pickup",
-      //   "pizzas": [{
-      //     "id": "1",
-      //     "quantity": "1"
-      //   },{
-      //     "id": "2",
-      //     "quantity": "1"
-      //   }]
-      // }
-    }
-
-
 
 
 
@@ -87,11 +65,36 @@ function App() {
         <h1 className='App-title'>Prime Pizza</h1>
       </header>
 
-      <img src='images/pizza_photo.png' />
-      <p>Pizza is great.</p>
+      <Router>
+        <ul className="nav">
+          <li>
+            <Link to="/home">Home</Link>
+          </li>
+          <li>
+            <Link to="/userinfo">User Info</Link>
+          </li>
+          <li>
+            <Link to="/checkout">Checkout</Link>
+          </li>
+        </ul>
+        <Route exact path="/admin">
+          <Admin />
+        </Route>
+        <Route exact path="/home">
+          {/* <Pizzas component goes here> */}
+        </Route>
+        <Route exact path="/userinfo">
+          {/* <Form component here> */}
+        </Route>
+        <Route exact path="/checkout">
+          {/* <Checkout goes here> */}
+        </Route>
 
+        {/* <img src='images/pizza_photo.png' />
+      <p>Pizza is great.</p> */}
+      </Router>
     </div>
-  );
+  )
 }
 
 export default App;
