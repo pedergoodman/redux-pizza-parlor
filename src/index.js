@@ -37,7 +37,8 @@ const cart = (state = [], action) => {
     // remove pizzas
   } else if (action.type === "REMOVE_CART") {
     // TODO - logic to remove cart item
-    return [...state, action.payload];
+    console.log("in cart", state, state[0].id, action.payload)
+return state = state.filter(item => {return item.id !== action.payload})
     // checkout 
   } else if (action.type === "CLEAR_CART") {
     return []

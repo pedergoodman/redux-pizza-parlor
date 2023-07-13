@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 
 function Admin() {
 
-    const contacts = useSelector(store = store.contacts)
+    const contacts = useSelector(store => store.contacts)
     console.log(contacts);
 
     return (
